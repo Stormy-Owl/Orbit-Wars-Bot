@@ -17,35 +17,35 @@ Training is performed entirely through parallel self-play. Six worker processes 
 ## Workflow
 
 ```text
-                   Game Observation
+                  Game Observation
                           │
                           ▼
-              Parse Planets & Fleets
+                Parse Planets & Fleets
                           │
                           ▼
-             Predict Future Positions
+               Predict Future Positions
                           │
                           ▼
-          Generate Candidate Actions (Using 3 Minor NNUEs)
+      Generate Candidate Actions (Using 3 Minor NNUEs)
                           │
                           ▼
-          Filter Invalid/Unsafe Moves
-        (Missed intercepts, bad targets)
+              Filter Invalid/Unsafe Moves
+            (Missed intercepts, bad targets)
                           │
-                          ▼                          │
-Alpha-Beta Search Engine(2 Player) / MCTS (4 Player)
-                          │
-                          ▼
-           NNUE Position Evaluation
+                          ▼                          
+      Alpha-Beta Search Engine(2 Player) / MCTS (4 Player)
                           │
                           ▼
-             Best Move Selection
+               NNUE Position Evaluation
                           │
                           ▼
-               Submit Action
+                   Best Move Selection
                           │
                           ▼
-                 Repeat Next Tick
+                     Submit Action
+                          │
+                          ▼
+                   Repeat Next Tick
 ```
 
 ### Key Features
