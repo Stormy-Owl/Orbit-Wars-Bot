@@ -14,18 +14,38 @@ Training is performed entirely through parallel self-play. Six worker processes 
 
 ### Workflow
 
-```
-3 Minor NNUEs
-        ↓
-Candidate Move Generation
-        ↓
-Geometry-Based Move Filtering
-        ↓
-Alpha-Beta (2 Players) / MCTS (3–4 Players)
-        ↓
-Main NNUE Board Evaluation
-        ↓
-Final Action Selection
+## Workflow
+
+```text
+                   Game Observation
+                          │
+                          ▼
+              Parse Planets & Fleets
+                          │
+                          ▼
+             Predict Future Positions
+                          │
+                          ▼
+          Generate Candidate Actions (Using 3 Minor NNUEs)
+                          │
+                          ▼
+          Filter Invalid/Unsafe Moves
+        (Missed intercepts, bad targets)
+                          │
+                          ▼                          │
+Alpha-Beta Search Engine(2 Player) / MCTS (4 Player)
+                          │
+                          ▼
+           NNUE Position Evaluation
+                          │
+                          ▼
+             Best Move Selection
+                          │
+                          ▼
+               Submit Action
+                          │
+                          ▼
+                 Repeat Next Tick
 ```
 
 ### Key Features
