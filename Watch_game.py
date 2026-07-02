@@ -15,7 +15,7 @@ def _load_env_module(path, name):
     spec.loader.exec_module(mod)
     return mod
 
-_env_dir =_ENV_DIR = os.environ.get(
+_env_dir = os.environ.get(
     "ORBIT_WARS_ENV_DIR",
     os.path.join(os.path.dirname(__file__), "orbit_wars_env")
 )
