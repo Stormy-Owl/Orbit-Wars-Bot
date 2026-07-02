@@ -15,7 +15,11 @@ def _load_env_module(path, name):
     spec.loader.exec_module(mod)
     return mod
 
-_env_dir = r"P:\Kaggle Bots\ORBIT WARS\orbit_wars_env"
+_env_dir =_ENV_DIR = os.environ.get(
+    "ORBIT_WARS_ENV_DIR",
+    os.path.join(os.path.dirname(__file__), "orbit_wars_env")
+)
+
 _ow_env  = _load_env_module(f"{_env_dir}\\orbit_wars.py", "orbit_wars_env")
 
 with open(f"{_env_dir}\\orbit_wars.json") as f:
